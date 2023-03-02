@@ -4,7 +4,6 @@
 library(shiny)
 library(tidyverse)
 
-
 fluidPage(
     tabsetPanel(
       
@@ -17,7 +16,17 @@ fluidPage(
       ),
       
       tabPanel(
-        "Analyze Different Age Groups"
+        "Analyze Different Age Groups",
+        sidebarLayout(
+          sidebarPanel(
+            p("Analyze different age groups:"),
+            checkboxGroupInput("type", "Type of Sleep",
+                         choices = c("REM sleep percentage", "Deep sleep percentage", "Light sleep percentage")),
+          ),
+          mainPanel(
+            plotOutput("barPlot")
+          )  
+        )
       ),
       
       tabPanel(
