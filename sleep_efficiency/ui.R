@@ -2,26 +2,36 @@
 
 
 library(shiny)
+library(tidyverse)
 
-# Define UI for application that draws a histogram
+
 fluidPage(
-
-    # Application title
-    titlePanel("Old Faithful Geyser Data"),
-
-    # Sidebar with a slider input for number of bins
-    sidebarLayout(
-        sidebarPanel(
-            sliderInput("bins",
-                        "Number of bins:",
-                        min = 1,
-                        max = 50,
-                        value = 30)
-        ),
-
-        # Show a plot of the generated distribution
-        mainPanel(
-            plotOutput("distPlot")
-        )
+    tabsetPanel(
+      
+      tabPanel(
+        "Project Overview"
+      ),
+      
+      tabPanel(
+        "Analyze Sleep Efficiency"
+      ),
+      
+      tabPanel(
+        "Analyze Different Age Groups"
+      ),
+      
+      tabPanel(
+        "Most Efficient Sleepers"
+      ),
+      
+      tabPanel(
+        "Coffee vs. Alcohol Sleep Efficiency"
+      ),
+      
+      tabPanel(
+        "Least Efficient Sleepers"
+      ),
+      
     )
+   
 )
