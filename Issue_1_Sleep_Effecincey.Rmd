@@ -1,0 +1,32 @@
+---
+title: "Issue 1"
+author: "Cobi Stancik"
+date: "2023-02-25"
+output: html_document
+---
+**Load the sleep data into Rmarkdown using the read.csv function.**
+
+```{r, message=FALSE}
+library(tidyverse)
+sleep <- read_delim("data/Sleep_Efficiency.csv")
+sleep %>%
+  head(4)
+```
+
+```{r}
+ggplot(sleep, aes(x = `Sleep duration`, y = `Sleep efficiency`)) +
+  geom_point(fill = "lightblue") +
+  labs(x = "Sleep duration", y = "Sleep Efficiency") 
+```
+
+```{r}
+ggplot(sleep, aes(x = `Sleep efficiency`, y = `REM sleep percentage`)) +
+  geom_point() +
+  labs(x = "Sleep Efficiency", y = "REM Sleep Percentage")
+```
+
+
+
+Visualize the sleep efficiency rating using a histogram or other appropriate plot.
+
+Provide a written explanation of your methodology and findings, including any insights you gained from analyzing the data.
