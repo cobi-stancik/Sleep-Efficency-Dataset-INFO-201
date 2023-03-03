@@ -6,27 +6,49 @@ library(tidyverse)
 
 function(input, output, session) {
   
-  ageSample <- reactive({
-    sleep[input$range[1]:input$range[2], ] %>% 
+  sample <- reactive({
+    sleep[input$range2[1]:input$range2[2], ] %>% 
       select(Age, input$percentage) %>% 
       arrange(Age)
   })
-
+  
   output$table <- renderTable({
-    ageSample()
+    sample()
+  })
+  
+  coffeeSample <- reactive({
+    sleep %>% 
+      filter(`Caffeine consumption` %in% input$caffeine)
+  })
+  
+  alcoholSample <- reactive({
+    sleep %>% 
+      filter(`Alcohol consumption` %in% input$alcohol)
   })
   
   output$coffeePlot <- renderPlot({
-    sleep %>% 
+    coffeeSample() %>% 
       ggplot(aes(`Sleep efficiency`, `Caffeine consumption`, fill = `Sleep efficiency`)) +
-      geom_col() 
-      #scale_color_brewer(palette = "Set1")
+      geom_col() +
+      ggtitle("Caffeine vs. Sleep efficiency")
   })
   
   output$alcPlot <- renderPlot({
-    sleep %>% 
+    alcoholSample() %>% 
       ggplot(aes(`Sleep efficiency`, `Alcohol consumption`, fill = `Sleep efficiency`)) +
-      geom_col()
+      geom_col() +
+      ggtitle("Alcohol vs. Sleep efficiency")
   })
-
+  
+  sleep_ef <- reactive({
+    sleep[input$range[1]:input$range[2], ] %>% 
+      select(Age, `Sleep efficiency`) %>% 
+      arrange(Age)
+  })
+  
+  output$sleep <- renderPlot({
+    ggplot(data = sleep_ef(), aes(x = Age, y = `Sleep efficiency`)) +
+      geom_point(color = "black", size = 3) + 
+      labs(x = "Age", y = "Sleep Efficiency")
+  })
 }
