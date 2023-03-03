@@ -48,10 +48,22 @@ fluidPage(
         "Coffee vs. Alcohol Sleep Efficiency",
         sidebarLayout(
           sidebarPanel(
-            p("Analyze sleep efficiency based on coffee and alcohol consumption")
+            p("Analyze sleep efficiency based on coffee and alcohol consumption"),
+            fluidRow(
+              column(6,
+                  checkboxGroupInput("caffeine", "Caffeine intake:",
+                               choices = c(0.0, 25.0, 50.0, 75.0, 100.0, 200.0),
+                               selected = 0.0)),
+              column(6,
+                  checkboxGroupInput("alcohol", "Alcohol intake:",
+                                     choices = c(0.0, 1.0, 2.0, 3.0, 4.0, 5.0),
+                                     selected = 0.0))
+            )
+            
           ),
           mainPanel(
-            
+            plotOutput("coffeePlot"),
+            plotOutput("alcPlot")
           )
         )
       ),

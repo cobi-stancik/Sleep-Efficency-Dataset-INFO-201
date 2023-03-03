@@ -13,9 +13,20 @@ function(input, output, session) {
   })
 
   output$table <- renderTable({
-      ageSample()
-
+    ageSample()
   })
-    
+  
+  output$coffeePlot <- renderPlot({
+    sleep %>% 
+      ggplot(aes(`Sleep efficiency`, `Caffeine consumption`, fill = `Sleep efficiency`)) +
+      geom_col() 
+      #scale_color_brewer(palette = "Set1")
+  })
+  
+  output$alcPlot <- renderPlot({
+    sleep %>% 
+      ggplot(aes(`Sleep efficiency`, `Alcohol consumption`, fill = `Sleep efficiency`)) +
+      geom_col()
+  })
 
 }
