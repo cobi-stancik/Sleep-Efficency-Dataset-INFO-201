@@ -1,28 +1,30 @@
-#
-# This is the server logic of a Shiny web application. You can run the
-# application by clicking 'Run App' above.
-#
-# Find out more about building applications with Shiny here:
-#
-#    http://shiny.rstudio.com/
-#
+sleep <- read_delim("../data/Sleep_Efficiency.csv")
 
 library(shiny)
+library(tidyverse)
 
-# Define server logic required to draw a histogram
 function(input, output, session) {
-
-    output$distPlot <- renderPlot({
-
-        # generate bins based on input$bins from ui.R
-        x    <- faithful[, 2]
-        bins <- seq(min(x), max(x), length.out = input$bins + 1)
-
-        # draw the histogram with the specified number of bins
-        hist(x, breaks = bins, col = 'darkgray', border = 'white',
-             xlab = 'Waiting time to next eruption (in mins)',
-             main = 'Histogram of waiting times')
-
-    })
-
+  
+  sample <- reactive({
+    sleep[input$range[1]:input$range[2], ] %>% 
+      select(Age, input$percentage) %>% 
+      arrange(Age)
+  })
+  
+  output$table <- renderTable({
+    sample()
+  })
+  
+  sleep_ef <- reactive({
+    sleep[input$range[1]:input$range[2], ] %>% 
+      select(Age, `Sleep efficiency`) %>% 
+      arrange(Age)
+  })
+  
+  output$sleep <- renderPlot({
+    ggplot(data = sleep_ef(), aes(x = Age, y = `Sleep efficiency`)) +
+      geom_point(color = "black", size = 3) + 
+      labs(x = "Age", y = "Sleep Efficiency")
+  })
+  
 }
