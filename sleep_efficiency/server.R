@@ -6,14 +6,14 @@ library(tidyverse)
 
 function(input, output, session) {
   
-  sample <- reactive({
+  ageSample <- reactive({
     sleep[input$range[1]:input$range[2], ] %>% 
       select(Age, input$percentage) %>% 
       arrange(Age)
   })
 
   output$table <- renderTable({
-      sample()
+      ageSample()
 
   })
     

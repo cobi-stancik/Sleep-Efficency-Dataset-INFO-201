@@ -45,7 +45,15 @@ fluidPage(
       ),
       
       tabPanel(
-        "Coffee vs. Alcohol Sleep Efficiency"
+        "Coffee vs. Alcohol Sleep Efficiency",
+        sidebarLayout(
+          sidebarPanel(
+            p("Analyze sleep efficiency based on coffee and alcohol consumption")
+          ),
+          mainPanel(
+            
+          )
+        )
       ),
       
       tabPanel(
