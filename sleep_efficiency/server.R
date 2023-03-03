@@ -5,14 +5,23 @@ library(shiny)
 library(tidyverse)
 
 function(input, output, session) {
+  
+   # y_var <- reactive({
+   #   sleep %>% 
+   #     select(input$type)
+   # })
+  sample <- reactive({
+    sleep[input$range[1]:input$range[2], ] %>% 
+      select(Age, "REM sleep percentage", "Deep sleep percentage", "Light sleep percentage") %>% 
+      arrange(Age)
+  })
 
-    output$barPlot <- renderPlot({
-      sleep %>% 
-        #figure out how to plot sleep percentages in bar
-        #connect to sidebar checkbox
-        ggplot(aes(x = Age)) +
-        geom_bar()
-    })
+  output$table <- renderTable({
+      sample()
+      #sleep %>% 
+      #  ggplot(aes(x = Age, y = input$type)) +
+      #  geom_col()
+  })
     
 
 }

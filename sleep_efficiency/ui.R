@@ -17,15 +17,17 @@ fluidPage(
       ),
       
       tabPanel(
-        "Analyze Different Age Groups",
+        "Analyze different age groups based on sleep percentages",
         sidebarLayout(
           sidebarPanel(
             p("Analyze different age groups:"),
-            checkboxGroupInput("type", "Type of Sleep",
-                         choices = c("REM sleep percentage", "Deep sleep percentage", "Light sleep percentage")),
+            sliderInput("range", "Age range:",
+                        min = 9,
+                        max = 69,
+                        value = c(21, 35)),
           ),
           mainPanel(
-            plotOutput("barPlot")
+            tableOutput("table")
           )  
         )
       ),
