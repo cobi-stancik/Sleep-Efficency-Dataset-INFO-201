@@ -1,4 +1,3 @@
-
 library(shiny)
 library(tidyverse)
 
@@ -69,7 +68,6 @@ fluidPage(
                                       choices = c(0.0, 1.0, 2.0, 3.0, 4.0, 5.0),
                                       selected = 1.0))
           )
-          
         ),
         mainPanel(
           plotOutput("coffeePlot"),

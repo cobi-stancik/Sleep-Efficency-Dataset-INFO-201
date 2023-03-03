@@ -49,6 +49,10 @@ function(input, output, session) {
   output$sleep <- renderPlot({
     ggplot(data = sleep_ef(), aes(x = Age, y = `Sleep efficiency`)) +
       geom_point(color = "black", size = 3) + 
-      labs(x = "Age", y = "Sleep Efficiency")
+      labs(x = "Age", y = "Sleep Efficiency") 
   })
+  
 }
+
+
+
