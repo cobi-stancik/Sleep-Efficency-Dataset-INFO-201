@@ -1,3 +1,7 @@
+<<<<<<< HEAD
+=======
+
+>>>>>>> 02aab2eed0adf268fc420add5acdbd350daf055e
 sleep <- read_delim("../data/Sleep_Efficiency.csv")
 
 library(shiny)
@@ -5,11 +9,16 @@ library(tidyverse)
 
 function(input, output, session) {
   
+<<<<<<< HEAD
   sample <- reactive({
+=======
+  ageSample <- reactive({
+>>>>>>> 02aab2eed0adf268fc420add5acdbd350daf055e
     sleep[input$range[1]:input$range[2], ] %>% 
       select(Age, input$percentage) %>% 
       arrange(Age)
   })
+<<<<<<< HEAD
   
   output$table <- renderTable({
     sample()
@@ -27,4 +36,13 @@ function(input, output, session) {
       labs(x = "Age", y = "Sleep Efficiency")
   })
   
+=======
+
+  output$table <- renderTable({
+      ageSample()
+
+  })
+    
+
+>>>>>>> 02aab2eed0adf268fc420add5acdbd350daf055e
 }
