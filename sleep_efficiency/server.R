@@ -8,7 +8,7 @@ function(input, output, session) {
   
   sample <- reactive({
     sleep[input$range[1]:input$range[2], ] %>% 
-      select(Age, "REM sleep percentage", "Deep sleep percentage", "Light sleep percentage") %>% 
+      select(Age, input$percentage) %>% 
       arrange(Age)
   })
 
