@@ -5,7 +5,8 @@ fluidPage(
   
   tabsetPanel(
     
-    tabPanel("Project Overview", 
+    tabPanel(
+      "Project Overview", ## PROJECT OVERVIEW
             
         h1(strong("Project Overview"), align = "center"),
                
@@ -15,16 +16,16 @@ fluidPage(
         
           imageOutput("sleeping_guy"),
           
-          h2("Project Aim: "), # Project Aim
+          h2(strong("Project Aim🎯")), # Project Aim
           
           tags$div(
             style = "display:block; background-color: lightblue; border:1px solid black; padding:10px;",
             "This webpage aims to study how various lifestyle choices such as coffee, alcohol, 
-            exercise, and smoking affect the efficiency of sleep. We will be observing the sleep 
+            smoking, and exercise affect the efficiency of sleep. We will be observing the sleep 
             efficiency of each person by age and gender."
           ),
           
-          h2("About the Data Set: "), # Data Set
+          h2(strong("About the Data Set📊")), # Data Set
           
           tags$div(
             style = "display:block; background-color: lightblue; border:1px solid black; padding:10px;",
@@ -32,7 +33,7 @@ fluidPage(
             of varying age groups. We accessed this data from kaggle.com. The data came from a sleep study 
             conducted by a research team from the University of Oxfordshire, and was meant to analyze 
             the way that sleep can be impacted by different lifestyle factors.",
-            br(),
+            br(), 
             br(),
             "The target audience includes male and female subjects, with age ranging from 9 to 69 years 
             old. The research team recruited participants from the local community in the UK and observed 
@@ -42,8 +43,7 @@ fluidPage(
             uiOutput("tab"), # URL link to data set
           ),
           
-          
-          h2("Major Questions: "), # Major Questions
+          h2(strong("Major Questions❔")), # Major Questions
           
           tags$div(
             style = "display:block; background-color: lightblue; border:1px solid black; padding:10px;",
@@ -61,16 +61,16 @@ fluidPage(
           
           tags$div(
             style = "display:block; background-color: lightblue; border:1px solid black; padding:10px;",
-            "How efficiently are people sleeping?"
+            "How does age affect sleep efficiency? (REM sleep, Deep sleep, Light sleep percentages)"
           ),
           
-          br()
+          br() # space
         
         )
     ),
     
     tabPanel(
-      "Analyze Sleep Efficiency",
+      "Analyze Sleep Efficiency", ## ANALYZE SLEEP EFFICIENCY
       sidebarLayout(
         sidebarPanel(
           p("Analyze Sleep Efficiency:"),
@@ -86,7 +86,7 @@ fluidPage(
     ),
     
     tabPanel(
-      "Analyze different age groups based on sleep percentages",
+      "Analyze different age groups based on sleep percentages", ## ANALYZE BY AGE
       sidebarLayout(
         sidebarPanel(
           p("Analyze different age groups:"),
@@ -110,11 +110,11 @@ fluidPage(
     ),
     
     tabPanel(
-      "Most Efficient Sleepers"
+      "Most Efficient Sleepers" 
     ),
     
     tabPanel(
-      "Coffee vs. Alcohol Sleep Efficiency",
+      "Coffee vs. Alcohol Sleep Efficiency", ## COFFEE VS ALCOHOL
       sidebarLayout(
         sidebarPanel(
           p("Analyze sleep efficiency based on coffee and alcohol consumption"),

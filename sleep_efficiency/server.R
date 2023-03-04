@@ -54,11 +54,12 @@ function(input, output, session) {
       labs(x = "Age", y = "Sleep Efficiency") 
   })
   
-  # Overview
+  # Overview image
   output$sleeping_guy <- renderImage({
     list(src = "../www/sleeping_guy.png",
          width = "700", 
-         height = "100%")
+         height = "100%",
+         style = "border:5px solid black;")
   }, deleteFile = F)
   
   # URL link to data set
