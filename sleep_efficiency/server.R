@@ -5,7 +5,7 @@ library(shiny)
 library(tidyverse)
 
 function(input, output, session) {
-  
+  # Analyze different age groups based on sleep percentages
   sample <- reactive({
     sleep[input$range2[1]:input$range2[2], ] %>% 
       select(Age, input$percentage) %>% 
@@ -16,6 +16,7 @@ function(input, output, session) {
     sample()
   })
   
+  # Coffee vs. Alcohol Sleep Efficiency
   coffeeSample <- reactive({
     sleep %>% 
       filter(`Caffeine consumption` %in% input$caffeine)
@@ -40,6 +41,7 @@ function(input, output, session) {
       ggtitle("Alcohol vs. Sleep efficiency")
   })
   
+  # Analyze Sleep Efficiency
   sleep_ef <- reactive({
     sleep[input$range[1]:input$range[2], ] %>% 
       select(Age, `Sleep efficiency`) %>% 
@@ -50,6 +52,19 @@ function(input, output, session) {
     ggplot(data = sleep_ef(), aes(x = Age, y = `Sleep efficiency`)) +
       geom_point(color = "black", size = 3) + 
       labs(x = "Age", y = "Sleep Efficiency") 
+  })
+  
+  # Overview
+  output$sleeping_guy <- renderImage({
+    list(src = "../www/sleeping_guy.png",
+         width = "700", 
+         height = "100%")
+  }, deleteFile = F)
+  
+  # URL link to data set
+  url <- a("Sleep Efficiency Data Set", href="https://www.kaggle.com/datasets/equilibriumm/sleep-efficiency")
+  output$tab <- renderUI({
+    tagList("Link to Data Set: ", url)
   })
   
 }

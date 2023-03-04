@@ -5,15 +5,75 @@ fluidPage(
   
   tabsetPanel(
     
-    tabPanel(
-      "Project Overview"
+    tabPanel("Project Overview", 
+            
+        h1(strong("Project Overview"), align = "center"),
+               
+        tags$figure(
+          
+          align = "center",
+        
+          imageOutput("sleeping_guy"),
+          
+          h2("Project Aim: "), # Project Aim
+          
+          tags$div(
+            style = "display:block; background-color: lightblue; border:1px solid black; padding:10px;",
+            "This webpage aims to study how various lifestyle choices such as coffee, alcohol, 
+            exercise, and smoking affect the efficiency of sleep. We will be observing the sleep 
+            efficiency of each person by age and gender."
+          ),
+          
+          h2("About the Data Set: "), # Data Set
+          
+          tags$div(
+            style = "display:block; background-color: lightblue; border:1px solid black; padding:10px;",
+            "We chose to work with a dataset that contains information about the sleep patterns of people 
+            of varying age groups. We accessed this data from kaggle.com. The data came from a sleep study 
+            conducted by a research team from the University of Oxfordshire, and was meant to analyze 
+            the way that sleep can be impacted by different lifestyle factors.",
+            br(),
+            br(),
+            "The target audience includes male and female subjects, with age ranging from 9 to 69 years 
+            old. The research team recruited participants from the local community in the UK and observed 
+            their sleep patterns over a span of several months.",
+            br(),
+            br(),
+            uiOutput("tab"), # URL link to data set
+          ),
+          
+          
+          h2("Major Questions: "), # Major Questions
+          
+          tags$div(
+            style = "display:block; background-color: lightblue; border:1px solid black; padding:10px;",
+            "Which lifestyle factor had the most impact on sleep efficiency?"
+          ),
+          
+          br(), # space
+          
+          tags$div(
+            style = "display:block; background-color: lightblue; border:1px solid black; padding:10px;",
+            "How do individual variables in regards to their lifestyle affect REM sleep duration?"
+          ),
+          
+          br(), # space
+          
+          tags$div(
+            style = "display:block; background-color: lightblue; border:1px solid black; padding:10px;",
+            "How efficiently are people sleeping?"
+          ),
+          
+          br()
+        
+        )
     ),
     
     tabPanel(
-      "Analyze Sleep Effeciency",
+      "Analyze Sleep Efficiency",
       sidebarLayout(
         sidebarPanel(
-          p("Analyze Sleep Effeciency:"),
+          p("Analyze Sleep Efficiency:"),
           sliderInput("range", "Age range:",
                       min = 9,
                       max = 69,
