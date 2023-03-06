@@ -76,7 +76,8 @@ fluidPage(
                       value = c(21, 35))
         ),
         mainPanel(
-          plotOutput("sleep")
+          plotOutput("sleepef"),
+          textOutput("sleepeftext")
         )  
       )
     ),
@@ -129,7 +130,7 @@ fluidPage(
     ),
     
     tabPanel(
-      "Awakeninngs & Sleep Efficiency", ## COFFEE VS ALCOHOL
+      "Awakenings & Sleep Efficiency", ## COFFEE VS ALCOHOL
       sidebarLayout(
         sidebarPanel(
           p("Analyze sleep efficiency based on awakenings"),

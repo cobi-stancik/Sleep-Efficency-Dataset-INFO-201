@@ -56,21 +56,25 @@ function(input, output, session) {
   })
   
   # Analyze Sleep Efficiency
-  sleep_ef <- reactive({
-    sleep[input$range[1]:input$range[2], ] %>% 
-      select(Age, `Sleep efficiency`) %>% 
-      arrange(Age)
-  })
-  
-  output$sleep <- renderPlot({
-    ggplot(data = sleep_ef(), aes(x = Age, y = `Sleep efficiency`)) +
+  output$sleepef <- renderPlot({
+    dataforsleep <- sleep %>%
+      filter(Age > input$range[1], Age < input$range[2])
+    
+    ggplot(
+      data = dataforsleep, 
+      aes(x = Age, y = `Sleep efficiency`)) +
       geom_point(color = "black", size = 3) + 
       labs(x = "Age", y = "Sleep Efficiency") 
   })
   
+  output$sleepeftext <- renderText({
+    paste("You have chosen a range that goes from",
+          input$range[1], "to", input$range[2], ".")
+  })
+  
   # Overview image
   output$sleeping_guy <- renderImage({
-    list(src = "../www/sleeping_guy.png",
+    list(src = "../data/sleeping_guy.jpg",
          width = "700", 
          height = "100%",
          style = "border:5px solid black;")
