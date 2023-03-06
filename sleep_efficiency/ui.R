@@ -29,18 +29,14 @@ fluidPage(
         
         tags$div(
           style = "display:block; background-color: lightblue; border:1px solid black; padding:10px;",
-          "We chose to work with a dataset that contains information about the sleep patterns of people 
+          p("We chose to work with a dataset that contains information about the sleep patterns of people 
             of varying age groups. We accessed this data from kaggle.com. The data came from a sleep study 
             conducted by a research team from the University of Oxfordshire, and was meant to analyze 
-            the way that sleep can be impacted by different lifestyle factors.",
-          br(), 
-          br(),
-          "The target audience includes male and female subjects, with age ranging from 9 to 69 years 
+            the way that sleep can be impacted by different lifestyle factors."),
+          p("The target audience includes male and female subjects, with age ranging from 9 to 69 years 
             old. The research team recruited participants from the local community in the UK and observed 
-            their sleep patterns over a span of several months.",
-          br(),
-          br(),
-          uiOutput("tab"), # URL link to data set
+            their sleep patterns over a span of several months."),
+          p(uiOutput("tab")), # URL link to data set
         ),
         
         h2(strong("Major Questions❔")), # Major Questions
