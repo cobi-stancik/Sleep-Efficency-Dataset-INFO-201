@@ -41,7 +41,6 @@ function(input, output, session) {
       ggtitle("Alcohol vs. Sleep efficiency")
   })
   
-<<<<<<< HEAD
   # Awakenings Sleep Efficiency
   awakeSample <- reactive({
     sleep %>% 
@@ -56,10 +55,6 @@ function(input, output, session) {
       scale_fill_gradient(low="blue", high="red")
   })
   
-  
-  
-=======
->>>>>>> 5f02572878038c1bdb9b917b5f98fa9a81a3207d
   # Analyze Sleep Efficiency
   sleep_ef <- reactive({
     sleep[input$range[1]:input$range[2], ] %>% 
@@ -89,8 +84,3 @@ function(input, output, session) {
   
 }
 
-
-<<<<<<< HEAD
-=======
-
->>>>>>> 5f02572878038c1bdb9b917b5f98fa9a81a3207d

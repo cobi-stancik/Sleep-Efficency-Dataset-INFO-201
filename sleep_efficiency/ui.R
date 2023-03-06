@@ -7,7 +7,6 @@ fluidPage(
     
     tabPanel(
       "Project Overview", ## PROJECT OVERVIEW
-<<<<<<< HEAD
       
       h1(strong("Project Overview"), align = "center"),
       
@@ -68,68 +67,6 @@ fluidPage(
         br() # space
         
       )
-=======
-            
-        h1(strong("Project Overview"), align = "center"),
-               
-        tags$figure(
-          
-          align = "center",
-        
-          imageOutput("sleeping_guy"),
-          
-          h2(strong("Project Aim🎯")), # Project Aim
-          
-          tags$div(
-            style = "display:block; background-color: lightblue; border:1px solid black; padding:10px;",
-            "This webpage aims to study how various lifestyle choices such as coffee, alcohol, 
-            smoking, and exercise affect the efficiency of sleep. We will be observing the sleep 
-            efficiency of each person by age and gender."
-          ),
-          
-          h2(strong("About the Data Set📊")), # Data Set
-          
-          tags$div(
-            style = "display:block; background-color: lightblue; border:1px solid black; padding:10px;",
-            "We chose to work with a dataset that contains information about the sleep patterns of people 
-            of varying age groups. We accessed this data from kaggle.com. The data came from a sleep study 
-            conducted by a research team from the University of Oxfordshire, and was meant to analyze 
-            the way that sleep can be impacted by different lifestyle factors.",
-            br(), 
-            br(),
-            "The target audience includes male and female subjects, with age ranging from 9 to 69 years 
-            old. The research team recruited participants from the local community in the UK and observed 
-            their sleep patterns over a span of several months.",
-            br(),
-            br(),
-            uiOutput("tab"), # URL link to data set
-          ),
-          
-          h2(strong("Major Questions❔")), # Major Questions
-          
-          tags$div(
-            style = "display:block; background-color: lightblue; border:1px solid black; padding:10px;",
-            "Which lifestyle factor had the most impact on sleep efficiency?"
-          ),
-          
-          br(), # space
-          
-          tags$div(
-            style = "display:block; background-color: lightblue; border:1px solid black; padding:10px;",
-            "How do individual variables in regards to their lifestyle affect REM sleep duration?"
-          ),
-          
-          br(), # space
-          
-          tags$div(
-            style = "display:block; background-color: lightblue; border:1px solid black; padding:10px;",
-            "How does age affect sleep efficiency? (REM sleep, Deep sleep, Light sleep percentages)"
-          ),
-          
-          br() # space
-        
-        )
->>>>>>> 5f02572878038c1bdb9b917b5f98fa9a81a3207d
     ),
     
     tabPanel(
@@ -173,7 +110,6 @@ fluidPage(
     ),
   
     tabPanel(
-<<<<<<< HEAD
       "Coffee vs. Alcohol Sleep Efficiency", ## COFFEE VS ALCOHOL
       sidebarLayout(
         sidebarPanel(
@@ -214,30 +150,6 @@ fluidPage(
         ),
         mainPanel(
           plotOutput("awakePlot")
-=======
-      "Most Efficient Sleepers" 
-    ),
-    
-    tabPanel(
-      "Coffee vs. Alcohol Sleep Efficiency", ## COFFEE VS ALCOHOL
-      sidebarLayout(
-        sidebarPanel(
-          p("Analyze sleep efficiency based on coffee and alcohol consumption"),
-          fluidRow(
-            column(6,
-                   checkboxGroupInput("caffeine", "Caffeine intake:",
-                                      choices = c(0.0, 25.0, 50.0, 75.0, 100.0, 200.0),
-                                      selected = 25.0)),
-            column(6,
-                   checkboxGroupInput("alcohol", "Alcohol intake:",
-                                      choices = c(0.0, 1.0, 2.0, 3.0, 4.0, 5.0),
-                                      selected = 1.0))
-          )
-        ),
-        mainPanel(
-          plotOutput("coffeePlot"),
-          plotOutput("alcPlot")
->>>>>>> 5f02572878038c1bdb9b917b5f98fa9a81a3207d
         )
       )
     ),
