@@ -66,10 +66,10 @@ fluidPage(
     ),
     
     tabPanel(
-      "Analyze Sleep Effeciency", ## ANALYZE SLEEP EFFICIENCY
+      "Analyze Sleep Efficiency", ## ANALYZE SLEEP EFFICIENCY
       sidebarLayout(
         sidebarPanel(
-          p("Analyze Sleep Effeciency:"),
+          p("Analyze Sleep Efficiency:"),
           sliderInput("range", "Age range:",
                       min = 9,
                       max = 69,
@@ -90,7 +90,7 @@ fluidPage(
           sliderInput("range2", "Age range:",
                       min = 9,
                       max = 69,
-                      value = c(21, 35)),
+                      value = c(20, 30)),
           checkboxGroupInput("percentage", "Select attribute",
                              choices = c("REM sleep percentage", "Deep sleep percentage", "Light sleep percentage"),
                              selected = c("REM sleep percentage", "Deep sleep percentage", "Light sleep percentage")),
@@ -144,7 +144,7 @@ fluidPage(
     ),
     
     tabPanel(
-      "Awakeninngs & Sleep Efficiency", ## COFFEE VS ALCOHOL
+      "Awakenings & Sleep Efficiency", ## COFFEE VS ALCOHOL
       sidebarLayout(
         sidebarPanel(
           p("Analyze sleep efficiency based on awakenings"),
