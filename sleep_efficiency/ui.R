@@ -154,7 +154,7 @@ fluidPage(
                                       choices = c(0.0, 1.0, 2.0, 3.0, 4.0),
                                       selected = 1.0)),
             p("The table shown on the right compares the the awakenings a user had in one night in 
-              relation to sleep effecincey, showing the direct correlation between the amount of time
+              relation to sleep effeciencey, showing the direct correlation between the amount of time
               you wake up in your sleep to how well you sleep.\n"),
             
           )
