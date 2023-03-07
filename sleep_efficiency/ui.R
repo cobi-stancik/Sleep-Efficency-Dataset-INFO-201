@@ -69,11 +69,12 @@ fluidPage(
       "Analyze Sleep Efficiency", ## ANALYZE SLEEP EFFICIENCY
       sidebarLayout(
         sidebarPanel(
-          p("Analyze Sleep Efficiency:"),
+          h3(strong("Analyze Sleep Efficiency")),
           sliderInput("range", "Age range:",
                       min = 9,
                       max = 69,
-                      value = c(21, 35))
+                      value = c(21, 35)),
+          p("The plot shown on the right compares age and sleep efficiency. ")
         ),
         mainPanel(
           plotOutput("sleepef"),
@@ -83,19 +84,19 @@ fluidPage(
     ),
     
     tabPanel(
-      "Analyze different age groups based on sleep percentages", ## ANALYZE BY AGE
+      "Analyze Different Age Groups Based on Sleep Percentages", ## ANALYZE BY AGE
       sidebarLayout(
         sidebarPanel(
-          p("Analyze different age groups:"),
+          h3(strong("Analyze Different Age Groups:")),
           sliderInput("range2", "Age range:",
                       min = 9,
                       max = 69,
-                      value = c(20, 30)),
+                      value = c(21, 45)),
           checkboxGroupInput("percentage", "Select attribute",
                              choices = c("REM sleep percentage", "Deep sleep percentage", "Light sleep percentage"),
                              selected = c("REM sleep percentage", "Deep sleep percentage", "Light sleep percentage")),
           p("The table shown on the right compares the sleep percentages of REM, Deep, and Light sleep
-              for people of varying age groups\n"),
+              for people of varying age groups"),
           textOutput("avgREM"),
           textOutput("avgDeep"),
           textOutput("avgLight")
@@ -110,7 +111,7 @@ fluidPage(
       "Coffee vs. Alcohol Sleep Efficiency", ## COFFEE VS ALCOHOL 
       sidebarLayout(
         sidebarPanel(
-          p("Analyze sleep efficiency based on coffee and alcohol consumption"),
+          h3(strong("Analyze Sleep Efficiency Based on Coffee and Alcohol Consumption")),
           fluidRow(
             column(6,
                    checkboxGroupInput("caffeine", "Caffeine intake:",
@@ -132,17 +133,17 @@ fluidPage(
     ),
     
     tabPanel(
-      "Awakenings & Sleep Efficiency", 
+      "Awakenings & Sleep Efficiency", ## AWAKENINGS & SLEEP EFFICIENCY
       sidebarLayout(
         sidebarPanel(
-          p("Analyze sleep efficiency based on awakenings"),
+          h3(strong("Analyze Sleep Efficiency Based on Awakenings")),
           fluidRow(
             column(5,
                    checkboxGroupInput("awake", "Awakenings:",
                                       choices = c(0.0, 1.0, 2.0, 3.0, 4.0),
                                       selected = 1.0)),
-            p("The table shown on the right compares the the awakenings a user had in one night in 
-              relation to sleep efficiencey, showing the direct correlation between the amount of time
+            p("The table shown on the right compares the awakenings a user had in one night in 
+              relation to sleep efficiency, showing the direct correlation between the amount of time
               you wake up in your sleep to how well you sleep.\n"),
             
           )

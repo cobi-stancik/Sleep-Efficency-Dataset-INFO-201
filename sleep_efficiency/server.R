@@ -1,4 +1,3 @@
-
 sleep <- read_delim("../data/Sleep_Efficiency.csv")
 
 library(shiny)
@@ -9,7 +8,7 @@ function(input, output, session) {
   # Analyze Sleep Efficiency
   output$sleepef <- renderPlot({
     dataforsleep <- sleep %>%
-      filter(Age > input$range[1], Age < input$range[2])
+      filter(Age >= input$range[1], Age <= input$range[2])
     
     ggplot(
       data = dataforsleep, 
@@ -24,43 +23,38 @@ function(input, output, session) {
   })
   
   # Analyze different age groups based on sleep percentages
-  output$table <- renderTable({
-    dataforpercent <- sleep %>%
-      filter(Age >= input$range2[1], Age <= input$range2[2]) %>%
+  ageSample <- reactive({
+    sleep %>% 
       select(Age, input$percentage) %>%
+      filter(Age > input$range2[1], Age < input$range2[2]) %>% 
       arrange(Age)
   })
- # ageSample <- reactive({
- #   sleep %>% 
- #     select(Age, input$percentage) %>%
- #     filter(Age > input$range2[1], Age < input$range2[2]) %>% 
- #     arrange(Age)
- # })
   
- # output$table <- renderTable({
- #   ageSample()
- # })
+  output$table <- renderTable({
+    ageSample()
+  })
   
- # output$avgREM <- renderText({
- #   ageSample() %>% 
- #     summarise(avg = mean(`REM sleep percentage`)) %>% 
- #     round(., digits = 2) %>% 
- #     paste("The average amount of REM sleep = ", ., "%")
- # })
+  output$avgREM <- renderText({
+    ageSample() %>% 
+      summarise(avg = mean(`REM sleep percentage`)) %>% 
+      round(., digits = 2) %>% 
+      paste("The average amount of REM sleep = ", ., "%")
+  })
   
- # output$avgDeep <- renderText({
- #   ageSample() %>% 
- #     summarise(avg = mean(`Deep sleep percentage`)) %>% 
- #     round(., digits = 2) %>% 
- #     paste("The average amount of Deep sleep = ", ., "%")
- # })
+  output$avgDeep <- renderText({
+    ageSample() %>% 
+      summarise(avg = mean(`Deep sleep percentage`)) %>% 
+      round(., digits = 2) %>% 
+      paste("The average amount of Deep sleep = ", ., "%")
+  })
   
- # output$avgLight <- renderText({
- #   ageSample() %>% 
- #     summarise(avg = mean(`Light sleep percentage`)) %>% 
- #     round(., digits = 2) %>% 
- #     paste("The average amount of Light sleep = ", ., "%")
- # })
+  output$avgLight <- renderText({
+    ageSample() %>% 
+      summarise(avg = mean(`Light sleep percentage`)) %>% 
+      round(., digits = 2) %>% 
+      paste("The average amount of Light sleep = ", ., "%")
+  })
+  
   
   # Coffee vs. Alcohol Sleep Efficiency
   coffeeSample <- reactive({
@@ -77,7 +71,7 @@ function(input, output, session) {
     coffeeSample() %>% 
       ggplot(aes(`Sleep efficiency`, `Caffeine consumption`, fill = `Sleep efficiency`)) +
       geom_col() +
-      ggtitle("Caffeine vs. Sleep efficiency") +
+      ggtitle("Caffeine vs. Sleep Efficiency") +
       scale_fill_gradient(low = "pink", high = "orange") 
   })
   
@@ -99,7 +93,7 @@ function(input, output, session) {
     awakeSample() %>% 
       ggplot(aes(`Sleep efficiency`, `Awakenings`, fill = `Awakenings`)) +
       geom_col() +
-      ggtitle("Awakenings vs. Sleep efficiency") +
+      ggtitle("Awakenings vs. Sleep Efficiency") +
       scale_fill_gradient(low="blue", high="red")
   })
   
