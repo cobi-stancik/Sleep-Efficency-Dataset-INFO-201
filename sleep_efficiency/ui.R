@@ -96,11 +96,9 @@ fluidPage(
                              selected = c("REM sleep percentage", "Deep sleep percentage", "Light sleep percentage")),
           p("The table shown on the right compares the sleep percentages of REM, Deep, and Light sleep
               for people of varying age groups\n"),
-          p("MAXIMUM: REM = 28%   Deep = 75%   Light = 55%"),
-          p("MINIMUM: REM = 15%   Deep = 20%   Light = 10%"),
-          p("There is a slight decrease in the percentage of light sleep as age increases, then the percentage begins 
-            to increase once past middle age. People of ages 9-18 had an average of 38.6% light sleep, while people ages
-            30-40 had an average of 19.7%, and people ages 56-65 had an average of 32.6%")
+          textOutput("avgREM"),
+          textOutput("avgDeep"),
+          textOutput("avgLight")
         ),
         mainPanel(
           tableOutput("table")
@@ -123,18 +121,8 @@ fluidPage(
                                       choices = c(0.0, 1.0, 2.0, 3.0, 4.0, 5.0),
                                       selected = c(0.0, 1.0, 2.0, 3.0, 4.0, 5.0)))
           ),
-          p("Sleep efficiency refers to the proportion of time in bed spent asleep.\n"),
-          p("In the coffee plot, we see a moderately positive correlation between caffeine and sleep efficiency.", strong("The more coffee 
-            a person drinks, the more time they spend sleeping."), "This leads us to believe one of two possible reasons:"),
-          p("1. Overconsumption of caffeine causes a crash towards the end of the day, resulting in an overall increased
-            time spent asleep"),
-          p("2. Caffeine causes people to be more energized, resulting in less time spent in bed \n"),
-          p("In the alcohol plot,", strong("we see no correlation between alcohol and sleep efficiency."), "This may be attributed to the fact that 
-            alcohol is a depressant which causes drowsiness and relaxation. This may cause a person to have an easier time falling asleep
-            after they have been drinking. On the other hand, people often drink alcohol late at night, which may result in less time spent 
-            asleep\n"),
-          p("For both these substances, it is likely that sleep quality has been imparied. Although sleep efficiency may seem to have improved as a result
-            of drinking caffeine/alcohol, this does not mean that these substances are beneficial in helping a person sleep better.")
+          p("We see a moderately positive correlation between caffeine and sleep efficiency, and no correlation
+          between alcohol and sleep efficiency")
         ),
         mainPanel(
           plotOutput("coffeePlot"),
@@ -144,7 +132,7 @@ fluidPage(
     ),
     
     tabPanel(
-      "Awakenings & Sleep Efficiency", ## COFFEE VS ALCOHOL
+      "Awakenings & Sleep Efficiency", 
       sidebarLayout(
         sidebarPanel(
           p("Analyze sleep efficiency based on awakenings"),
@@ -154,7 +142,7 @@ fluidPage(
                                       choices = c(0.0, 1.0, 2.0, 3.0, 4.0),
                                       selected = 1.0)),
             p("The table shown on the right compares the the awakenings a user had in one night in 
-              relation to sleep effeciencey, showing the direct correlation between the amount of time
+              relation to sleep efficiencey, showing the direct correlation between the amount of time
               you wake up in your sleep to how well you sleep.\n"),
             
           )
@@ -166,7 +154,32 @@ fluidPage(
     ),
     
     tabPanel(
-      "Conclusion" ## CONCLUSION PAGE
+      "Conclusion", ## CONCLUSION PAGE
+      h1("Takeaways"),
+      
+      # AGE VS SLEEP PERCENTAGE 
+      p("As we compare the averages between the age groups (9-21, 22-45, and 46-69), we can see that the percentage of REM sleep
+        remains relatively unchanged. The percentage of deep sleep increases by 10% between youth (9-21) and adult (22-45), 
+        then stays the same as age increases. The percentage of light sleep decreases by 12% between youth and adult ages, then
+        also stays the same as age increases further."),
+      p("From this, we've concluded that", strong("people have the most deep sleep as adults (ages 21-45), the most light sleep
+        in their youth (ages 9-20), and the same amount of REM sleep throughout their lives.")),
+      
+      ## CAFFEINE/ALCOHOL VS SLEEP EFFICIENCY
+      p("Sleep efficiency refers to the proportion of time in bed spent asleep. In the caffeine plot, we see a moderately positive 
+            correlation between caffeine and sleep efficiency.", strong("The more coffee a person drinks, the more time they spend 
+            sleeping."), "This leads us to believe one of two possible reasons:"),
+      p("1. Overconsumption of caffeine causes a crash towards the end of the day, resulting in an overall increased
+            time spent asleep"),
+      p("2. Caffeine causes people to be more energized, resulting in less time spent in bed"),
+      p("In the alcohol plot,", strong("we see no correlation between alcohol and sleep efficiency."), "This may be attributed to the fact that 
+            alcohol is a depressant which causes drowsiness and relaxation. This may cause a person to have an easier time falling asleep
+            after they have been drinking. On the other hand, people often drink alcohol late at night, which may result in less time spent 
+            asleep"),
+      p("For both these substances, it is likely that sleep quality has been imparied. Although sleep efficiency may seem to have improved as a result
+            of drinking caffeine/alcohol, this does not mean that these substances are beneficial in helping a person sleep better."),
+      h1("Data quality"),
+      h1("Future ideas")
     )
   )
 )
