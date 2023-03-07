@@ -24,12 +24,38 @@ function(input, output, session) {
   })
   
   # Analyze different age groups based on sleep percentages
-  output$table <- renderTable({
-    dataforpercent <- sleep %>%
-      filter(Age >= input$range2[1], Age <= input$range2[2]) %>%
+  ageSample <- reactive({
+    sleep %>% 
       select(Age, input$percentage) %>%
+      filter(Age > input$range2[1], Age < input$range2[2]) %>% 
       arrange(Age)
   })
+  
+  output$table <- renderTable({
+    ageSample()
+  })
+  
+  output$avgREM <- renderText({
+    ageSample() %>% 
+      summarise(avg = mean(`REM sleep percentage`)) %>% 
+      round(., digits = 2) %>% 
+      paste("The average amount of REM sleep = ", ., "%")
+  })
+  
+  output$avgDeep <- renderText({
+    ageSample() %>% 
+      summarise(avg = mean(`Deep sleep percentage`)) %>% 
+      round(., digits = 2) %>% 
+      paste("The average amount of Deep sleep = ", ., "%")
+  })
+  
+  output$avgLight <- renderText({
+    ageSample() %>% 
+      summarise(avg = mean(`Light sleep percentage`)) %>% 
+      round(., digits = 2) %>% 
+      paste("The average amount of Light sleep = ", ., "%")
+  })
+  
   
   # Coffee vs. Alcohol Sleep Efficiency
   coffeeSample <- reactive({
