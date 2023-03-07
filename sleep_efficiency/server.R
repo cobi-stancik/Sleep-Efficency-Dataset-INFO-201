@@ -6,37 +6,29 @@ library(tidyverse)
 
 function(input, output, session) {
   
+  # Analyze Sleep Efficiency
+  output$sleepef <- renderPlot({
+    dataforsleep <- sleep %>%
+      filter(Age > input$range[1], Age < input$range[2])
+    
+    ggplot(
+      data = dataforsleep, 
+      aes(x = Age, y = `Sleep efficiency`)) +
+      geom_point(color = "black", size = 3) + 
+      labs(x = "Age", y = "Sleep Efficiency") 
+  })
+  
+  output$sleepeftext <- renderText({
+    paste("You have chosen a range that goes from",
+          input$range[1], "to", input$range[2], ".")
+  })
+  
   # Analyze different age groups based on sleep percentages
-  ageSample <- reactive({
-    sleep %>% 
-      select(Age, input$percentage) %>%
-      filter(Age > input$range2[1], Age < input$range2[2]) %>% 
-      arrange(Age)
-  })
-  
   output$table <- renderTable({
-    ageSample()
-  })
-  
-  output$avgREM <- renderText({
-    ageSample() %>% 
-      summarise(avg = mean(`REM sleep percentage`)) %>% 
-      round(., digits = 2) %>% 
-      paste("The average amount of REM sleep = ", ., "%")
-  })
-  
-  output$avgDeep <- renderText({
-    ageSample() %>% 
-      summarise(avg = mean(`Deep sleep percentage`)) %>% 
-      round(., digits = 2) %>% 
-      paste("The average amount of Deep sleep = ", ., "%")
-  })
-  
-  output$avgLight <- renderText({
-    ageSample() %>% 
-      summarise(avg = mean(`Light sleep percentage`)) %>% 
-      round(., digits = 2) %>% 
-      paste("The average amount of Light sleep = ", ., "%")
+    dataforpercent <- sleep %>%
+      filter(Age > input$range2[1], Age < input$range2[2]) %>%
+      select(Age, input$percentage) %>%
+      arrange(Age)
   })
   
   # Coffee vs. Alcohol Sleep Efficiency
@@ -76,25 +68,8 @@ function(input, output, session) {
     awakeSample() %>% 
       ggplot(aes(`Sleep efficiency`, `Awakenings`, fill = `Awakenings`)) +
       geom_col() +
-      ggtitle("Awakenigs vs. Sleep efficiency") +
+      ggtitle("Awakenings vs. Sleep efficiency") +
       scale_fill_gradient(low="blue", high="red")
-  })
-  
-  # Analyze Sleep Efficiency
-  output$sleepef <- renderPlot({
-    dataforsleep <- sleep %>%
-      filter(Age > input$range[1], Age < input$range[2])
-    
-    ggplot(
-      data = dataforsleep, 
-      aes(x = Age, y = `Sleep efficiency`)) +
-      geom_point(color = "black", size = 3) + 
-      labs(x = "Age", y = "Sleep Efficiency") 
-  })
-  
-  output$sleepeftext <- renderText({
-    paste("You have chosen a range that goes from",
-          input$range[1], "to", input$range[2], ".")
   })
   
   # Overview image
@@ -112,4 +87,3 @@ function(input, output, session) {
   })
   
 }
-
