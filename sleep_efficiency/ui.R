@@ -213,7 +213,7 @@ fluidPage(
         alcohol consumption or increase exercise frequency, and the impact on sleep patterns could be 
         measured using the dataset."),
       p("3.", strong("Analysis of Subgroups:"), "The dataset could be used to investigate differences in sleep patterns 
-        and lifestyle factors among different subgroups, such as age, gender, or race/ethnicity. This 
+        and lifestyle factors among different subgroups, such as one's sleeping environment and race/ethnicity. This 
         could help identify potential health disparities related to sleep and inform targeted interventions."),
       p("4.", strong("Machine Learning Analysis:"), "Machine learning algorithms could be applied to the dataset to identify 
         patterns or predictors of poor sleep quality or duration. This could potentially identify novel risk 
