@@ -21,8 +21,8 @@ fluidPage(
         tags$div(
           style = "display:block; background-color: lightblue; border:1px solid black; padding:10px;",
           "This webpage aims to study how various lifestyle choices such as coffee, alcohol, 
-            smoking, and exercise affect the efficiency of sleep. We will be observing the sleep 
-            efficiency of each person by age and gender."
+            smoking, and exercise affect the quality of sleep. We will be observing the sleep 
+            efficiency as well as other factors of each person, considering age and gender."
         ),
         
         h2(strong("About the Data Set📊")), # Data Set
@@ -50,7 +50,7 @@ fluidPage(
         
         tags$div(
           style = "display:block; background-color: lightblue; border:1px solid black; padding:10px;",
-          "How do individual variables in regards to their lifestyle affect REM sleep duration?"
+          "Do the number of awakenings in a night directly correlate to how well one sleeps?"
         ),
         
         br(), # space
@@ -74,11 +74,13 @@ fluidPage(
                       min = 9,
                       max = 69,
                       value = c(21, 35)),
-          p("The plot shown on the right compares age and sleep efficiency. ")
+          p("The plot shown on the right compares age and sleep efficiency."), 
+          p("Sleep efficiency refers to the proportion of time spent in bed 
+            that is actually spent asleep. This measure allows us to analyze 
+            whether age has a significant impact on sleep quality. ")
         ),
         mainPanel(
-          plotOutput("sleepef"),
-          textOutput("sleepeftext")
+          plotOutput("sleepef")
         )  
       )
     ),
@@ -142,7 +144,7 @@ fluidPage(
                    checkboxGroupInput("awake", "Awakenings:",
                                       choices = c(0.0, 1.0, 2.0, 3.0, 4.0),
                                       selected = 1.0)),
-            p("The table shown on the right compares the awakenings a user had in one night in 
+            p("The table shown on the right compares the awakenings a subject had in one night in 
               relation to sleep efficiency, showing the direct correlation between the amount of time
               you wake up in your sleep to how well you sleep.\n"),
             

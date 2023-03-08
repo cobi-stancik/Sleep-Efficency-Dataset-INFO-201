@@ -14,20 +14,15 @@ function(input, output, session) {
     ggplot(
       data = dataforsleep, 
       aes(x = Age, y = `Sleep efficiency`)) +
-      geom_point(color = "black", size = 3) + 
+      geom_point(color = "blue", size = 3) + 
       labs(x = "Age", y = "Sleep Efficiency") 
-  })
-  
-  output$sleepeftext <- renderText({
-    paste("You have chosen a range that goes from",
-          input$range[1], "to", input$range[2], ".")
   })
   
   # Analyze different age groups based on sleep percentages
   ageSample <- reactive({
     sleep %>% 
       select(Age, input$percentage) %>%
-      filter(Age > input$range2[1], Age < input$range2[2]) %>% 
+      filter(Age >= input$range2[1], Age <= input$range2[2]) %>% 
       arrange(Age)
   })
   
@@ -101,9 +96,9 @@ function(input, output, session) {
   # Overview image
   output$sleeping_guy <- renderImage({
     list(src = "../data/sleeping_guy.jpg",
-         width = "700", 
+         width = "600", 
          height = "100%",
-         style = "border:5px solid black;")
+         style = "border: 5px solid black;")
   }, deleteFile = F)
   
   # URL link to data set
