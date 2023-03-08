@@ -77,8 +77,7 @@ fluidPage(
           p("The plot shown on the right compares age and sleep efficiency."), 
           p("Sleep efficiency refers to the proportion of time spent in bed 
             that is actually spent asleep. This measure allows us to analyze 
-            whether age has a significant impact on sleep quality. "),
-          p("We see very little correlation ")
+            whether age has a significant impact on sleep quality. ")
         ),
         mainPanel(
           plotOutput("sleepef")
@@ -205,18 +204,18 @@ fluidPage(
         that the results are both valid and ethical."),
       
       h1("Future Ideas"),
-      p("1. Longitudinal Studies: The current dataset provides a snapshot of sleep patterns and 
+      p("1.", strong("Longitudinal Studies:"), "The current dataset provides a snapshot of sleep patterns and 
         lifestyle factors at a single point in time. However, longitudinal studies that track changes
         in sleep patterns and behaviors over time could provide more insight into how lifestyle factors
         affect sleep quality and duration."),
-      p("2. Interventions: The dataset could be used to design and test interventions aimed at improving 
+      p("2.", strong("Interventions:"), "The dataset could be used to design and test interventions aimed at improving 
         sleep quality and duration. For example, interventions could be designed to reduce caffeine or 
         alcohol consumption or increase exercise frequency, and the impact on sleep patterns could be 
         measured using the dataset."),
-      p("3. Analysis of Subgroups: The dataset could be used to investigate differences in sleep patterns 
+      p("3.", strong("Analysis of Subgroups:"), "The dataset could be used to investigate differences in sleep patterns 
         and lifestyle factors among different subgroups, such as age, gender, or race/ethnicity. This 
         could help identify potential health disparities related to sleep and inform targeted interventions."),
-      p("4. Machine Learning Analysis: Machine learning algorithms could be applied to the dataset to identify 
+      p("4.", strong("Machine Learning Analysis:"), "Machine learning algorithms could be applied to the dataset to identify 
         patterns or predictors of poor sleep quality or duration. This could potentially identify novel risk 
         factors or inform personalized interventions for individuals with sleep problems.")
     )
