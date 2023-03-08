@@ -77,7 +77,8 @@ fluidPage(
           p("The plot shown on the right compares age and sleep efficiency."), 
           p("Sleep efficiency refers to the proportion of time spent in bed 
             that is actually spent asleep. This measure allows us to analyze 
-            whether age has a significant impact on sleep quality. ")
+            whether age has a significant impact on sleep quality. "),
+          p("We see very little correlation ")
         ),
         mainPanel(
           plotOutput("sleepef")
@@ -181,8 +182,43 @@ fluidPage(
             asleep"),
       p("For both these substances, it is likely that sleep quality has been imparied. Although sleep efficiency may seem to have improved as a result
             of drinking caffeine/alcohol, this does not mean that these substances are beneficial in helping a person sleep better."),
-      h1("Data quality"),
-      h1("Future ideas")
+      # Did you find your dataset of reasonable quality? 
+      # Do you think it gives unbiased results? 
+      # Do you see issues with potentially harming certain population groups?
+      h1("Data Quality"),
+      p("This data set has very poor quality. The source of the data supposedly comes from
+        the University of Oxfordshire, which when Googled, does not show up as a legitimate
+        university. We unfortunately did not catch this until recently, and decided to keep 
+        using this data set. "),
+      p("That said, this data set was supposedly collected using a combination of self-reported surveys, 
+        actigraphy, and polysomnography which is a sleep monitoring technique. Self-reported 
+        data suggests a less thorough and incomprehensive data collection method. "),
+      p("As for whether the data set provides unbiased results, the study's inclusion 
+        criteria and recruitment methods may have introduced selection bias, as participants 
+        were recruited from the local community and may not be representative of the larger 
+        population. Additionally, self-reported surveys may be subject to response bias, 
+        as participants may not accurately report their behaviors. "),
+      p("Regarding potential harm to certain population groups, the use of polysomnography
+        and significant changes to sleep patterns may pose risks to certain groups such 
+        as pregnant women or individuals with sleep disorders. Overall, it is important for researchers 
+        to consider and address potential sources of bias and harm in their studies to ensure
+        that the results are both valid and ethical."),
+      
+      h1("Future Ideas"),
+      p("1. Longitudinal Studies: The current dataset provides a snapshot of sleep patterns and 
+        lifestyle factors at a single point in time. However, longitudinal studies that track changes
+        in sleep patterns and behaviors over time could provide more insight into how lifestyle factors
+        affect sleep quality and duration."),
+      p("2. Interventions: The dataset could be used to design and test interventions aimed at improving 
+        sleep quality and duration. For example, interventions could be designed to reduce caffeine or 
+        alcohol consumption or increase exercise frequency, and the impact on sleep patterns could be 
+        measured using the dataset."),
+      p("3. Analysis of Subgroups: The dataset could be used to investigate differences in sleep patterns 
+        and lifestyle factors among different subgroups, such as age, gender, or race/ethnicity. This 
+        could help identify potential health disparities related to sleep and inform targeted interventions."),
+      p("4. Machine Learning Analysis: Machine learning algorithms could be applied to the dataset to identify 
+        patterns or predictors of poor sleep quality or duration. This could potentially identify novel risk 
+        factors or inform personalized interventions for individuals with sleep problems.")
     )
   )
 )
